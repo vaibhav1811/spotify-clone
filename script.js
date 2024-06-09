@@ -1,12 +1,10 @@
-
-
-let songs;
-
 let currentsong = new Audio();
+let songs;
+let currFolder;
 
 function convertSecondsToMinutes(seconds) {
-  if(isNaN(seconds)|| seconds<0){
-    return"00:00";
+  if (isNaN(seconds) || seconds < 0) {
+    return "00:00";
   }
   // Calculate whole minutes and remaining seconds
   const minutes = Math.floor(seconds / 60);
@@ -20,8 +18,9 @@ function convertSecondsToMinutes(seconds) {
   return `${paddedMinutes}:${paddedSeconds}`;
 }
 
-async function getSongs() {
-  let a = await fetch("http://127.0.0.1:5500/songs/");
+async function getSongs(folder) {
+  currFolder = folder;
+  let a = await fetch('http://127.0.0.1:5500/${folder}/');
   let response = await a.text();
   console.log(response);
   let div = document.createElement("div");
@@ -31,7 +30,7 @@ async function getSongs() {
   for (let index = 0; index < as.length; index++) {
     const element = as[index];
     if (element.href.endsWith(".mp3")) {
-      songs.push(element.href.split("/songs/")[1]);
+      songs.push(element.href.split('/${folder}/')[1]);
     }
   }
 
@@ -40,7 +39,7 @@ async function getSongs() {
 
 const playmusic = (track, pause = false) => {
   // let audio = new Audio("/songs/" + track)
-  currentsong.src = "/songs/" + track;
+  currentsong.src = '/${currFolder}/' + track;
   if (!pause) {
     currentsong.play();
     play.src = "pause.svg";
@@ -53,7 +52,7 @@ const playmusic = (track, pause = false) => {
 async function main() {
   // get the list of all songs
 
-   songs = await getSongs();
+  songs = await getSongs("songs/ncs");
   playmusic(songs[0], true);
   console.log(songs);
 
@@ -83,7 +82,6 @@ async function main() {
     document.querySelector(".songlist").getElementsByTagName("li")
   ).forEach((e) => {
     e.addEventListener("click", (element) => {
-
       playmusic(e.querySelector(".info").firstElementChild.innerHTML.trim());
     });
   });
@@ -131,35 +129,34 @@ async function main() {
 
   // add an event listener to previous
   previous.addEventListener("click", () => {
-    currentsong.pause()
+    currentsong.pause();
     console.log("previous clicked");
-    
-    let index =songs.indexOf(currentsong.src.split("/").slice(-1)[0])
-    if((index-1)>=0)
-    {
-      playmusic(songs[index-1])
+
+    let index = songs.indexOf(currentsong.src.split("/").slice(-1)[0]);
+    if (index - 1 >= 0) {
+      playmusic(songs[index - 1]);
     }
-   
   });
 
   // add an event listener to previous
   next.addEventListener("click", () => {
-    currentsong.pause()
+    currentsong.pause();
     console.log(" Next clicked");
-    
-    let index =songs.indexOf(currentsong.src.split("/").slice(-1)[0])
-     if((index+1)< songs.length)
-     {
-       playmusic(songs[index+1])
-     }
-    
-   })
 
-   // add an event to volume
-    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e) => {
-console.log("Setting volume to",e.target.value , " / 100")
-currentsong.volume= parseInt(e.target.value)/100
-})
+    let index = songs.indexOf(currentsong.src.split("/").slice(-1)[0]);
+    if (index + 1 < songs.length) {
+      playmusic(songs[index + 1]);
+    }
+  });
+
+  // add an event to volume
+  document
+    .querySelector(".range")
+    .getElementsByTagName("input")[0]
+    .addEventListener("change", (e) => {
+      console.log("Setting volume to", e.target.value, "/ 100");
+      currentsong.volume = parseInt(e.target.value) / 100;
+    });
 }
 
 main();
