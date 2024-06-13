@@ -391,9 +391,9 @@ body {
     margin: 30px;
     gap: 2vw; */
     /* background-color: salmon; */
-    width: 90%;
+    width: 100%;
     gap: 1vw;
-    max-height: 50vh;
+    max-height: 44vh;
 
     margin: 30px;
     display: flex;
@@ -401,7 +401,10 @@ body {
     gap: 10px;
     flex-wrap: wrap;
     overflow-y: auto;
+    padding-bottom: 20px;
     /* overflow-x: auto; */
+    /* overflow-y: h; */
+    scroll-behavior:auto;
 
 }
 
@@ -418,6 +421,7 @@ body {
     transition: all .4s;
     padding: 10px;
     transition: all .9s;
+    cursor: pointer;
 
 
     /* width: 200px;
@@ -672,9 +676,22 @@ body {
 
 }
 
-.range {
-    color: aqua;
+.mute{
+
+    filter: invert(1);
+ 
 }
+
+.range input{
+
+    cursor: pointer;
+
+}
+
+/* .input {
+    color: aqua;
+    cursor: pointer;
+} */
 
 
 @media (max-width: 1000px) {
