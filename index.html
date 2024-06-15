@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotify - Web Player:Music for everyone</title>
     <link rel="icon" href="img/icons8-spotify.svg">
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="utility.css">
 
@@ -14,16 +15,25 @@
 </head>
 
 <body>
+    <!-- <div class="loader">
+        <h1>ENVIRONMENTS</h1>
+        <h1>EXPERIENCES</h1>
+        <h1>CONTENT</h1>
+        <h1>Developed by VAIBHAV KUMAR</h1>
+    </div> -->
     <div class="container flex">
         <div class="left  ">
+        
             <div class="close">
                 <img width="30" class="invert" src="close.svg" alt="">
             </div>
             <div class="part1">
-
+                <!-- <div class="logo">
+                    <img src="img/fire_rabbit_logo-removebg-preview.png" alt="">
+                </div> -->
                 <ul>
-                    <li><img src="img/home icon.png" alt="Home">Home</li>
-                    <li><img src="img/search icon.png" alt="Search">Search</li>
+                    <li id="1"><img src="img/home icon.png" alt="Home">Home</li>
+                    <li id="2"><img src="img/search icon.png" alt="Search">Search</li>
                 </ul>
             </div>
 
@@ -67,7 +77,8 @@
                     <img class="invert" src="hamburger.svg" alt="">
                 </div>
                 <div class="p1">
-                    <div class="con-1">
+
+                    <!-- <div class="con-1">
                         <svg class="p3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
                             color="#000000" fill="none">
                             <path d="M15 6C15 6 9.00001 10.4189 9 12C8.99999 13.5812 15 18 15 18" stroke="#fff"
@@ -80,7 +91,7 @@
                                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
 
-                    </div>
+                    </div> -->
 
                     <div class="con-2">
                         <button class="all">All</button>
@@ -114,12 +125,15 @@
                                 <polygon points="9.5,7.5 16.5,12 9.5,16.5" fill="#000" />
                             </svg>
                         </div>
-                        <img src="img/ranbir.jpeg" alt="">
-                        <div class="content">
-                            <h2>Hot Hits Hindi</h2>
-                            <p>Hottest Hindi music cover served here. </p>
-
+                        <div class="cover">
+                            <img src="img/ranbir.jpeg" alt="">
+                            <div class="content">
+                                <h2>Hot Hits Hindi</h2>
+                                <p>Hottest Hindi music cover served here. </p>
+    
+                            </div>
                         </div>
+              
                     </div>
  
                     <div data-folder="cs" class="card">
@@ -166,6 +180,7 @@
                             <circle cx="12" cy="12" r="10" stroke="lightgreen" stroke-width=".6" fill="#1fdf64" />
                             <polygon points="9.5,7.5 16.5,12 9.5,16.5" fill="#000" />
                         </svg>
+                    </div>
                         <img src="img/shahrukh.jpeg" alt="">
                         <div class="content">
                             <h2>Hot Hits Hindi</h2>
@@ -227,13 +242,49 @@
                 </div>
             </div>
         </div>
+
+<!-- 
+        <div class="playbar">
+            <div class="seekbar">
+                <div class="circle">
+
+                </div>
+            </div>
+            <div class="abovebar">
+                <div class="songinfo">
+
+                </div>
+                <div class="songbuttons">
+                    <img width="25" id="previous" src="prev.svg" alt="">
+                    <img width="25" id="play" src="play.svg" alt="">
+                    <img width="25" id="next" src="forward.svg" alt="">
+                </div>
+                <div class="timevol">
+                    <div class="songtime">
+
+                    </div>
+
+                    <div class="volume">
+                        <img width="20" src="volume.svg" alt="">
+                        <div class="range">
+                            <input type="range" name="volrange">
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div> -->
     </div>
 
 
 
 
 
-    <script src="script.js"></script>
+    <script src="source.js"></script>
+    <!-- <script src="prctice.js"></script> -->
+    <!-- <script src="script.js"></script> -->
 </body>
 
 </html>
